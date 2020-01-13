@@ -33,3 +33,12 @@ To view bookmarks, navigate to `localhost:3000/bookmarks`
 | Model       | Encapsulate logic with relevant data          | Encapsulate bookmark data in a class    |
 | View        | Display the result to a user                  | Show the bookmark data in a list        |
 | Controller  | Get data from the model and put in the view   | Render bookmark data into to the view   |
+
+#set up
+setting up a database
+
+
+To set up the appropriate tables, connect to the database in `psql` and run the SQL scripts in the `db/migrations` folder in the given order.
+
+admin=# CREATE DATABASE "bookmark_manager_test";
+admin=# CREATE TABLE bookmarks(id SERIAL PRIMARY KEY, url VARCHAR(60));
