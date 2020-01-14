@@ -15,14 +15,14 @@ class BookmarkManager < Sinatra::Base
         erb :'bookmarks/new'
       end
 
-    post '/bookmarks' do
+    post '/bookmarks/new' do
         # Print the ENV variable
         p ENV
         p "form data submitted to /bookmarks route"
         p params
-          Bookmark.create(url: params[:url])
+          Bookmark.create(url: params['url'], title: params[:title])
         redirect '/bookmarks'
-    end
+       end
 
 
   run! if app_file == $0
