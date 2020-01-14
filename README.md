@@ -21,6 +21,10 @@ As a time-pressed user
 So that I can save a website
 I would like to add the site's address and title to bookmark manager
 ````
+As a user
+So I can store bookmark data for later retrieval
+I want to add a bookmark to Bookmark Manager
+````
 
 To view bookmarks, navigate to `localhost:3000/bookmarks`
 
@@ -42,3 +46,12 @@ To set up the appropriate tables, connect to the database in `psql` and run the 
 
 admin=# CREATE DATABASE "bookmark_manager_test";
 admin=# CREATE TABLE bookmarks(id SERIAL PRIMARY KEY, url VARCHAR(60));
+
+#####
+TRUNCATE TABLE
+
+Removes all rows from a table without logging the individual row deletions. TRUNCATE TABLE is similar to the DELETE statement with no WHERE clause; however, TRUNCATE TABLE is faster and uses fewer system and transaction log resources.
+
+DROP TABLE
+
+Removes one or more table definitions and all data, indexes, triggers, constraints, and permission specifications for those tables.
