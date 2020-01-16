@@ -13,6 +13,6 @@ feature 'Updating a bookmark' do
 
     expect(current_path).to eq '/bookmarks'
     expect(page).not_to have_link('Makers Academy', href: 'http://www.makersacademy.com')
-    expect(page).to  have_link('Bakers academy', href: 'http://www.bakersacademy.com')
+    expect(page).to have_link('Bakers Academy', href: 'http://www.bakersacademy.com')
   end
 end

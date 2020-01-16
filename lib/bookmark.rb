@@ -16,7 +16,7 @@ class Bookmark
     else
       connection = PG.connect(dbname: 'bookmark_manager')
     end
-    bookmarks = connection.exec("SELECT * FROM bookmarks;")
+    bookmarks = connection.exec('SELECT * FROM bookmarks;')
 
     bookmarks.map { |bookmark|
       Bookmark.new(
@@ -53,7 +53,7 @@ class Bookmark
     else
       connection = PG.connect(dbname: 'bookmark_manager')
     end
-    result = connection.exec("UPDATE bookmarks SET url = '#{url}, title =#{title}' WHERE id = #{id} RETURNING id, url, title;")
+    result = connection.exec("UPDATE bookmarks SET url = '#{url}', title ='#{title}' WHERE id = #{id} RETURNING id, url, title;")
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 

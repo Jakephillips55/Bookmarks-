@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require './lib/bookmark'
+require_relative './lib/bookmark'
 
 
 class BookmarkManager < Sinatra::Base
@@ -33,11 +33,11 @@ class BookmarkManager < Sinatra::Base
 
   get '/bookmarks/:id/edit' do
     @bookmark = Bookmark.find(id: params[:id])
-     erb :'bookmarks/edit'
+    erb :'bookmarks/edit'
   end
 
   patch '/bookmarks/:id' do
-   Bookmark.update(id: params[:id], title: params[:title],
+      Bookmark.update(id: params[:id], title: params[:title],
       url: params[:url])
     redirect '/bookmarks'
   end
