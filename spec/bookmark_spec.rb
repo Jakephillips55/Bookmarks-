@@ -73,4 +73,15 @@ describe Bookmark do
       expect(result.url).to eq 'http://www.makersacademy.com'
     end
   end
+
+  describe '#commemts' do \
+    it 'returns a list of comments on the bookmark' do
+      bookmark = Bookmark.create(title: 'Gains', url: 'http:://www.JakesProteinShakes.com')
+      DatabaseConnection.query("INSERT INTO comments (id, text, bookmark_id) VALUES(1, 'Test comment', #{bookmark.id})")
+
+      comment = bookmark.comment.first
+
+      expect(comment['text']).to eq 'Test comment'
+    end
+  end
 end

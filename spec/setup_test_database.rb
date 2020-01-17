@@ -9,6 +9,6 @@ connection = PG.connect(dbname: 'bookmark_manager_test')
 
 #connection.exec("CREATE TABLE bookmarks(id SERIAL PRIMARY KEY, url VARCHAR(60));")
 
-connection.exec("TRUNCATE bookmarks;")
+connection.exec("TRUNCATE bookmarks, comments;")
 
 end

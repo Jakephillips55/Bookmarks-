@@ -3,6 +3,7 @@ require_relative './lib/bookmark'
 require './database_connection_setup.rb'
 require 'uri'
 require 'sinatra/flash'
+# require_relative './lib/comment'
 
 class BookmarkManager < Sinatra::Base
   enable :sessions, :method_override
@@ -44,6 +45,17 @@ class BookmarkManager < Sinatra::Base
   patch '/bookmarks/:id' do
       Bookmark.update(id: params[:id], title: params[:title],
       url: params[:url])
+    redirect '/bookmarks'
+  end
+
+  get '/bookmarks/:id/comments/new' do
+    @bookmark_id = params[:id]
+    erb :'comments/new'
+  end
+
+  post '/bookmarks/:id/comments' do
+    connection = PG.connection(dbname: 'bookmark_manager_test')
+    connection.exec("INSERT INTO comments (text, bookmark_id) VALUES('#{params[:comment]}', '#{params[:id]}');")
     redirect '/bookmarks'
   end
 
